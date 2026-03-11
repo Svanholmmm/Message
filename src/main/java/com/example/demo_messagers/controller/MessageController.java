@@ -1,6 +1,7 @@
 package com.example.demo_messagers.controller;
 
 import com.example.demo_messagers.model.Message;
+import com.example.demo_messagers.repository.MessageRepository;
 import com.example.demo_messagers.service.MessageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,11 @@ public class MessageController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(message, HttpStatus.CREATED);
+    }
+    @PostMapping("/add")
+    public ResponseEntity<Message> addMessage(@RequestBody Message message){
+        Message savedMessage = service.addMessage(message);
+        return new ResponseEntity<Message>(savedMessage, HttpStatus.OK);
     }
 }
 

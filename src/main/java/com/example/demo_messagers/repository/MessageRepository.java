@@ -21,6 +21,12 @@ public class MessageRepository {
     public List<Message> getAllMessages(){
         return messages;
     }
+    public Message addMessage(Message message){
+        message.setId(messageId);
+        messages.add(message);
+        messageId++;
+        return message;
+    }
     public Message findMessageById(int id){
         for(Message message : messages){
             if(message.getId() == id){

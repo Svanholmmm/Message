@@ -17,10 +17,12 @@ public class MessageService {
     }
     public Message findMessageById(int id, boolean caps){
         Message message = repository.findMessageById(id);
-        caps = true;
         if(caps){
             return new Message(message.getId(), message.getContent().toUpperCase());
         }
         return message;
+    }
+    public Message addMessage(Message message){
+        return repository.addMessage(message);
     }
 }
